@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://arpan:qwerty12345@ds053148.mongolab.com:53148/asce');
+mongoose.connect('mongodb://arpan:qwerty12345@ds053148.mongolab.com:53148/asce');
 
 mongoose.connection.on('open', function (ref) {
   console.log('Connected to mongo server.');
@@ -61,9 +61,9 @@ var Gallery = mongoose.model('GallerySchema',GallerySchema,'GallerySchema');
 var RecentPosts = mongoose.model('RecentPostsSchema',RecentPostsSchema,'RecentPostsSchema');
 var Users = mongoose.model('UserSchema',UserSchema,'UserSchema');
 
-mongoose.connect( "mongodb://localhost/asce" , function (err) {
+/*mongoose.connect( "mongodb://localhost/asce" , function (err) {
         if(err) console.log('err');
-    });
+    });*/
 
 module.exports = {
     EventsOppCol: EventsOppCol,
