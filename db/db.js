@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://arpan:qwerty12345@ds053148.mongolab.com:53148/asce');
+mongoose.connect('mongodb://arpan:qwerty12345@ds043398.mongolab.com:43398/asce');
 
 mongoose.connection.on('open', function (ref) {
   console.log('Connected to mongo server.');
