@@ -36,6 +36,7 @@ router.route('/:date_id')
             db.Calender.findById(req.params.date_id, function(err, Docs){
                 if (err)
                     res.send(err);
+                Docs.events = [];
                 Docs.events = req.body.events;
                 Docs.save(function(err) {
                     if (err)

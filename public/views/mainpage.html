@@ -64,13 +64,14 @@
 			</div>
 			<h2>Calender dates</h2>
 			<hr/>
+			{{calender}}
 			<div ng-repeat="event in calender.events track by $index">
 				<div class="row">
 					<div class="col-md-6">
-						<input type="text" class="form-group form-control" placeholder="Date" ng-model="event.when" onclick="console.log(this.value)">
+						<input type="text" class="form-group form-control" placeholder="Date" ng-model="calender.events[$index].when">
 					</div>
 					<div class="col-md-6">	
-						<input type="text" name="name" placeholder="What" ng-model="event.desc"  class='form-control form-group'>
+						<input type="text" name="name" placeholder="What" ng-model="calender.events[$index].desc"  class='form-control form-group'>
 					</div>
 				</div>
 				<div class="row">
