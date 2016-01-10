@@ -1,7 +1,7 @@
 var year = moment().year();
 
 jQuery(document).ready(function($) {
-  $.ajax({async:0, type:'GET' ,url: "http://localhost:3000/api/calender", success: function(result){
+  $.ajax({ type:'GET' ,url: "http://localhost:3000/api/calender", success: function(result){
         var events = [];
         for(var i=0;i<result[0].events.length;i++){
           events.push({date:result[0].events[i].when,title:result[0].events[i].desc});
