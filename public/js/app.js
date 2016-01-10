@@ -7,7 +7,7 @@ var AsceTools;
 	AsceTools.constant('APIConstants', {
 		end_point: (function(env) {
 			switch(env) {
-				default : return 'http://localhost:3000/';
+				default : return 'http://asce.herokuapp.com/';
 			}
 		})(document.domain)
 	});
@@ -23,7 +23,7 @@ var MembersGallery;
 	MembersGallery.constant('APIConstants', {
 		end_point: (function(env) {
 			switch(env) {
-				default : return 'http://localhost:3000/';
+				default : return 'http://asce.herokuapp.com/';
 			}
 		})(document.domain)
 	});
@@ -97,7 +97,7 @@ var MembersGallery;
 		return {
 			all: function(type) {
 				var $this = this;
-				return $http.get('http://localhost:3000/api/' + type).then(function(data) {
+				return $http.get('http://asce.herokuapp.com/api/' + type).then(function(data) {
 					var response = data;
 					return { status: 200, data: response };
 				}, function(data) {
@@ -112,7 +112,7 @@ var MembersGallery;
 		return {
 			all: function(type) {
 				var $this = this;
-				return $http.get('http://localhost:3000/api/' + type).then(function(data) {
+				return $http.get('http://asce.herokuapp.com/api/' + type).then(function(data) {
 					var response = data;
 					return { status: 200, data: response };
 				}, function(data) {
@@ -124,7 +124,7 @@ var MembersGallery;
 			delete: function(type, id) {
 				var $this = this;
 				var uid =  $window.sessionStorage['user'];
-				return $http.delete('http://localhost:3000/api/' + type + '/' + id + "/" +uid).then(function(data) {
+				return $http.delete('http://asce.herokuapp.com/api/' + type + '/' + id + "/" +uid).then(function(data) {
 					return { status: 200 };
 				}, function(data) {
 					alert('Error Deleting  - ' + JSON.stringify(data.data));
@@ -135,7 +135,7 @@ var MembersGallery;
 			add: function(type, item) {
 				var $this = this;
 				item.uid =  $window.sessionStorage['user'];
-				return $http.post('http://localhost:3000/api/' + type, item).then(function(data) {
+				return $http.post('http://asce.herokuapp.com/api/' + type, item).then(function(data) {
 					var response = data.data;
 					return { status: 201, data: response };
 				}, function(data) {
@@ -147,7 +147,7 @@ var MembersGallery;
 			update: function(type, id, item) {
 				var $this = this;
 				item.uid =  $window.sessionStorage['user'];
-				return $http.put('http://localhost:3000/api/' + type + '/' + id, item).then(function(data) {
+				return $http.put('http://asce.herokuapp.com/api/' + type + '/' + id, item).then(function(data) {
 					var response = data.data;
 					return { status: 200, data: response };
 				}, function(data) {
@@ -158,7 +158,7 @@ var MembersGallery;
 
 			find: function(type, query) {
 				var $this = this;
-				return $http.get('http://localhost:3000/api/' + type + '/'+ query).then(function(data) {					
+				return $http.get('http://asce.herokuapp.com/api/' + type + '/'+ query).then(function(data) {					
 					var response = data.data;
 					return { status: 200, data: response };
 				}, function(data) {
