@@ -1,0 +1,40 @@
+extends base_layout
+
+block styles
+	link(rel='stylesheet', type='text/css', href='/less/events.css')
+
+block content
+		.container-fluid.events-page
+			.row
+				section.parallax-wrapper
+					.parallax
+					h1= events.title
+			.row
+				.container.main-content
+					.row
+						.col-md-3.clndr-area
+							include asce-date-arp/date.html
+						.col-md-8
+							.row
+								.col-md-12
+									h3 Overview
+									p= events.maindesc
+									each p in events.subdesc
+										h5(style="font-weight:bold")= p.subtitle
+										p= p.subdescription
+								.clearfix
+								.image-banner
+									each item in events.imagelink
+										.col-md-4
+											.thumb(style="background-image:url('#{item.link}')")
+												div
+													.p-10
+														h2= item.imagedesc.title
+														p= item.imagedesc.desc
+														.bottom-text
+															h4 Time and Venue
+															.pull-left= item.imagedesc.left
+															.pull-right= item.imagedesc.right
+															.clearfix
+											a(href="/events/#{item.imagedesc.clink}").btn.btn-primary.read-more Read More
+									.clearfix

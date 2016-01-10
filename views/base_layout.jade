@@ -1,0 +1,47 @@
+html
+	head
+		title= title
+
+		link(rel="stylesheet" href="/css/bootstrap.min.css")
+		link(rel="stylesheet" href="/less/base_layout.css")
+		link(rel="stylesheet" href="/less/footer.css")
+		link(href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css')
+		link(rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+
+		block styles
+
+	body
+		.rel
+			.container-fluid
+				.row.nav-menu-wrapper
+					.ascelogo
+						img(src='/img/asce.png')
+					button.boot-button( type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-menu" aria-expanded="false")
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					ul.nav-menu
+						li
+							a(href='/') HOME
+						li
+							a(href='/events') EVENTS
+						li
+							a(href="/opportunities") OPPORTUNITIES
+						li
+							a(href="/collaborate") COLLABORATE
+						li
+							a(href="/members") MEMBERS
+						li
+							a(href="/gallery") GALLERY
+					.clearfix
+				.clearfix
+				.row
+					.main-content
+						block content
+
+
+				include ./footer.jade
+
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+		script(src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js")
+		block scripts

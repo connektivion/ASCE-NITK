@@ -1,0 +1,73 @@
+extends layout
+
+block styles
+	link(rel='stylesheet', type='text/css', href='/less/index.css')
+	link(rel="stylesheet" type="text/css" href="/css/elastislide.css")
+
+block content
+		section#content1.container-fluid
+			.row
+				.container.top-section
+					.row
+						.col-md-4.section-item
+							.section-text
+								h3= data[0].col1.title
+								p= data[0].col1.desc
+							.item-image(style="background: url('#{data[0].col1.imagelink}')")
+							a(href="#{data[0].col1.link}").btn.btn-primary.border-0 Read More
+							.clearfix
+						.col-md-4.section-item
+							.section-text
+								h3= data[0].col2.title
+								p= data[0].col2.desc
+							.item-image(style="background: url('#{data[0].col2.imagelink}');")
+							a(href="#{data[0].col2.link}").btn.btn-primary.border-0 Read More
+							.clearfix
+						.col-md-4.section-item
+							.section-text
+								h3= data[0].col3.title
+								p= data[0].col3.desc
+							.item-image(style="background: url('#{data[0].col3.imagelink}');")
+							a(href="#{data[0].col3.link}").btn.btn-primary.border-0 Read More
+							.clearfix
+		.container-fluid
+			.row
+				section.parallax-wrapper
+					.parallax
+					h1 NITK STUDENTS CHAPTER
+		section.container-fluid
+			.row
+				.container.about-content
+					.row.mission-content
+						.col-md-6.mission
+							h4 Mission
+							ul
+								each val in data[0].mission
+									li= val
+						.col-md-6.vision
+							h4 Vision
+							blockquote
+								p= data[0].vision
+						.clearfix
+					.row.mission
+						.col-md-6.about-image
+							ul#carousels.elastislide-list
+								li
+									a
+										img(src='/img/ban1.jpg')
+								li
+									a
+										img(src='/img/ban2.jpg')
+								li
+									a
+										img(src='/img/ban1.jpg')
+								li
+									a
+										img(src='/img/ban3.jpg')
+								li
+									a
+										img(src='/img/ban1.jpg')
+						.col-md-6
+							h4 About ASCE
+							p= data[0].about
+				.clearfix

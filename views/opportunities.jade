@@ -1,0 +1,155 @@
+extends base_layout
+
+block styles
+	link(rel='stylesheet', type='text/css', href='/less/events.css')
+	link(rel='stylesheet', type='text/css', href='/css/sidemenu.css')
+
+block content
+		.container-fluid.opportunities-page
+			.row
+				section.parallax-wrapper
+					if(focus!==undefined)
+						.parallax(style="background-image:url('#{focus.bannerimage}')!important")
+					else
+						.parallax(style="background-image:url('#{events.bannerimage}')!important")
+					if(focus!=undefined)
+						h1= focus.title
+					else
+						h1= events.title
+			.row
+				.container.main-content
+					.row
+						.col-md-3
+							#side-sub-menu
+								ul.side-menu
+									if(events.page!='opportunities'||focus!=undefined)
+										if(focus!=undefined)
+											h4(style="text-transform:uppercase;") Other #{focus.subpageOf}
+										each item in events.imagelink
+											li
+												a(href="/#{events.page}/#{item.imagedesc.clink}")= item.imagedesc.title
+													span#tt
+									if(events.page=='opportunities'&&focus==undefined)
+										li.has-sub
+											a Workshop
+												span#nav-button
+											ul
+												each item in events.imagelink
+													if(item.imagedesc.stype=='w')
+														li
+															a(href="/#{events.page}/#{item.imagedesc.clink}")= item.imagedesc.title
+										li.has-sub
+											a(href="#") Projects
+												span#nav-button
+											ul
+												each item in events.imagelink
+													if(item.imagedesc.stype=='p')
+														li
+															a(href="/#{events.page}/#{item.imagedesc.clink}")= item.imagedesc.title
+										li.has-sub
+											a(href="#") ASCE / AISC Competitions
+												span#nav-button
+											ul
+												each item in events.imagelink
+													if(item.imagedesc.stype=='c')
+														li
+															a(href="/#{events.page}/#{item.imagedesc.clink}")= item.imagedesc.title
+						.col-md-8
+							.row
+								.col-md-12
+									h3 Overview
+									if(focus!=undefined)
+										p= focus.maindesc
+									else
+										p= events.maindesc
+									if(focus!=undefined)
+										each p in focus.subdesc
+											h5(style="font-weight:bold")= p.subtitle
+											p= p.subdescription
+									if(events.subpageOf=='mainpage'&&focus==undefined)	
+										each p in events.subdesc
+											h5(style="font-weight:bold")= p.subtitle
+											p= p.subdescription
+								.clearfix
+								if(focus!=undefined)
+									.col-md-12(style="padding: 10px 15px 30px;")
+										section
+											row
+												h5(style="font-weight:bold") Thumbnails
+												.row
+													each context in focus.subdesc
+														if(context.subimage)
+															.col-md-4
+																.thumb(style="background-image:url('#{context.subimage}');cursor: default;")
+													.clearfix
+								else
+									.image-banner
+										if(events.page!='opportunities'&&events.subpageOf=='mainpage'&&focus==undefined)
+											section
+												each context in events.imagelink
+													.col-md-4
+														.thumb(style="background-image:url('#{context.link}')")
+															div
+																.p-10
+																	h2= context.imagedesc.title
+																	p= context.imagedesc.desc
+																	.bottom-text
+																		h4 Contact
+																		.details= context.imagedesc.left
+																		.details= context.imagedesc.right
+														a(href="/#{events.page}/#{context.imagedesc.clink}").btn.btn-primary.read-more Read More
+										if(events.page=='opportunities'&&events.subpageOf=='mainpage'&&focus==undefined)		
+											.col-md-12
+												h4 Workshops
+											section
+												each image in events.imagelink
+													if(image.imagedesc.stype=='w')
+														.col-md-4
+															.thumb(style="background-image:url('#{image.link}')")
+																div
+																	.p-10
+																		h2= image.imagedesc.title
+																		p= image.imagedesc.desc
+																		.bottom-text
+																			h4 Contact
+																			.details= image.imagedesc.left
+																			.details= image.imagedesc.right
+															a(href="/#{events.page}/#{image.imagedesc.clink}").btn.btn-primary.read-more Read More
+												.clearfix
+											.col-md-12
+												h4 Competitions
+											section
+												each image in events.imagelink
+													if(image.imagedesc.stype=='c')
+														.col-md-4
+															.thumb(style="background-image:url('#{image.link}')")
+																div
+																	.p-10
+																		h2= image.imagedesc.title
+																		p= image.imagedesc.desc
+																		.bottom-text
+																			h4 Contact
+																			.details= image.imagedesc.left
+																			.details= image.imagedesc.right
+															a(href="/#{events.page}/#{image.imagedesc.clink}").btn.btn-primary.read-more Read More
+												.clearfix
+											.col-md-12
+												h4 Projects *
+											section.project-section
+												.project-info *these projects are being carried out by undergraduate students
+												each project in events.imagelink
+													if(project.imagedesc.stype=='p')
+														.col-md-4
+															.thumb(style="background-image:url('#{project.link})")
+																div
+																	.p-10
+																		h2= project.imagedesc.title
+																		p= project.imagedesc.desc
+																		.bottom-text
+																			h4 Contact
+																			.details= project.imagedesc.left
+																			.details= project.imagedesc.right
+															a(href="/#{events.page}/#{project.imagedesc.clink}").btn.btn-primary.read-more Read More
+												.clearfix
+block scripts
+		script(type="text/javascript" src="/js/sidemenu.js")
