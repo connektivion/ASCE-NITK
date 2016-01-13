@@ -43,11 +43,12 @@ router.route('/:event_id')
             db.EventsOppCol.findById(req.params.event_id, function(err, Docs){
                 if (err)
                     res.send(err);
-                Docs={};
                 Docs.page = req.body.page,
                 Docs.subpageOf = req.body.subpageOf,
                 Docs.title = req.body.title,
                 Docs.maindesc = req.body.maindesc,
+                Docs.subdesc=[];
+                Docs.imagelink=[];
                 Docs.subdesc = req.body.subdesc,
                 Docs.imagelink = req.body.imagelink,
                 Docs.bannerimage = req.body.bannerimage,
