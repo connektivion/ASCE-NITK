@@ -8,6 +8,7 @@ img.ng-thumb {
     cursor: pointer;
     margin: 7px 1% 7px 0;
     box-shadow: 1px 1px 1px 1px #ccc;
+        background-size: cover;
 }
 
 .members-page figure {
